@@ -26,29 +26,29 @@ class TaskServiceTestIT {
     private final TaskRepository taskRepository;
 
 
-    private static final Long taskIdExisted = 5L;
-    private static final Long taskIdNotExisted = 6L;
-    private static final String tagCodeExisted = "test";
-    private static final String tagCodeNotExisted = "invalid";
+    private static final Long TASK_ID_EXISTED = 5L;
+    private static final Long TASK_ID_NOT_EXISTED = 6L;
+    private static final String TAG_CODE_EXISTED = "test";
+    private static final String TAG_CODE_NOT_EXISTED = "invalid";
 
-    private static final String tagTitleExisted = "Test";
+    private static final String TAG_TITLE_EXISTED = "Test";
 
     @Test
     void addTagPositiveTest() {
-        Optional<TaskTo> task =  taskService.addTag(taskIdExisted, tagCodeExisted);
+        Optional<TaskTo> task =  taskService.addTag(TASK_ID_EXISTED, TAG_CODE_EXISTED);
         assertTrue((task).isPresent());
         assertThat(task.get().getTags()).hasSize(1);
-        assertTrue(task.get().getTags().contains(tagTitleExisted));
+        assertTrue(task.get().getTags().contains(TAG_TITLE_EXISTED));
     }
 
     @Test
     void addBadCodeTagTest() {
-        Optional<TaskTo> task =  taskService.addTag(taskIdExisted, tagCodeNotExisted);
+        Optional<TaskTo> task =  taskService.addTag(TASK_ID_EXISTED, TAG_CODE_NOT_EXISTED);
         assertTrue((task).isEmpty());
 
-        Optional<Task> taskShouldNotEdit = taskRepository.findById(taskIdExisted);
+        Optional<Task> taskShouldNotEdit = taskRepository.findById(TASK_ID_EXISTED);
         assertThat(taskShouldNotEdit.get().getTags()).hasSize(0);
-        assertFalse(taskShouldNotEdit.get().getTags().contains(tagCodeNotExisted));
+        assertFalse(taskShouldNotEdit.get().getTags().contains(TAG_CODE_NOT_EXISTED));
     }
 
     @Test
@@ -60,6 +60,4 @@ class TaskServiceTestIT {
         Duration duration = taskService.fetchWorkTime(taskRepository.findById(5L).get());
         assertEquals(duration.toDays(),2L);
     }
-
-
 }

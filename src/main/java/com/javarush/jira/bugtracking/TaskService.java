@@ -74,6 +74,7 @@ public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository
         subscribe.setObjectId(taskId);
         subscribe.setObjectType(ObjectType.TASK);
         subscribe.setUserId(userId);
+
         if (user.hasRole(Role.ADMIN)) {
             subscribe.setUserTypeCode(ADMIN);
         } else {
@@ -81,7 +82,6 @@ public class TaskService extends BugtrackingService<Task, TaskTo, TaskRepository
         }
 
         userBelongRepository.saveAndFlush(subscribe);
-
         return mapper.toToList(repository.getAll());
     }
 
