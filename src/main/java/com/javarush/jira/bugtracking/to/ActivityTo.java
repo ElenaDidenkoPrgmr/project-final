@@ -19,8 +19,8 @@ public class ActivityTo extends BaseTo {
     @NotNull
     User author;
 
-    @NotNull
-    TaskTo task;
+    /*@NotNull
+    TaskTo task;*/
 
     @Nullable
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -50,10 +50,10 @@ public class ActivityTo extends BaseTo {
     @Positive
     Integer estimate;
 
-    public ActivityTo(Long id, User author, TaskTo task, LocalDateTime updated, String comment, String statusCode, String priorityCode, String typeCode, Integer estimate) {
+    public ActivityTo(Long id, User author, /*TaskTo task,*/ LocalDateTime updated, String comment, String statusCode, String priorityCode, String typeCode, Integer estimate) {
         super(id);
         this.author = author;
-        this.task = task;
+        //this.task = task;
         this.updated = updated;
         this.comment = comment;
         this.statusCode = statusCode;

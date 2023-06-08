@@ -25,6 +25,8 @@ public class ProfileTo extends BaseTo {
     @NotNull
     private Set<@Valid ContactTo> contacts;
 
+
+
     public boolean isContactTypePresent(String type) {
         return contacts.stream()
                 .map(ContactTo::getCode)

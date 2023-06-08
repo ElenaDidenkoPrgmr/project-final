@@ -4,6 +4,7 @@ import com.javarush.jira.AbstractControllerTest;
 import com.javarush.jira.ref.internal.Reference;
 import com.javarush.jira.ref.internal.ReferenceRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -55,6 +56,7 @@ public class ReferenceControllerTest extends AbstractControllerTest {
 
     @Test
     @WithUserDetails(value = ADMIN_MAIL)
+    //@Disabled
     void delete() throws Exception {
         perform(MockMvcRequestBuilders.delete(REST_URL + RefType.TASK + "/" + TASK_CODE))
                 .andDo(print())
